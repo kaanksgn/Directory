@@ -1,9 +1,12 @@
 ﻿using DirectoryService.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Web.Http;
 
 namespace DirectoryService.Controllers
@@ -13,27 +16,27 @@ namespace DirectoryService.Controllers
     {
 
         private readonly Model1Container context;
-
         public AuthanticateController() { this.context = new Model1Container(); }
 
         // GET api/values/5
         [AllowAnonymous]
         [HttpPost]
         [ActionName("Register")]
-
-        public HttpResponseMessage Register(string name, string email, string password, string phone)
+        public HttpResponseMessage Register([Required]string name, [Required]string email, [Required]string password, [Required]string phone)
         {
-
+            if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.InternalServerError, "Model state is not valid.");
+            
             try
             {
                 Company company = (from c in context.Company where c.Email == email select c).FirstOrDefault();
 
-                byte[] passwordHash, passworSalt;
+                
 
                 if (company == null)
                 {
-                    CreatePassword(password, out passwordHash, out passworSalt);
-                    if ((passwordHash != null || passworSalt != null))
+                    byte[] passwordHash, passwordSalt;
+                    CreatePassword(password, out passwordHash, out passwordSalt);
+                    if ((passwordHash != null || passwordSalt != null))
                     {
                         Company newCompany = new Company()
                         {
@@ -46,7 +49,7 @@ namespace DirectoryService.Controllers
                             CreatorRole = "Company",
                             CreationDate = DateTime.Now,
                             PasswordHash = passwordHash,
-                            PasswordSalt = passworSalt,
+                            PasswordSalt = passwordSalt,
 
                         };
                         context.Company.Add(newCompany);
@@ -75,14 +78,25 @@ namespace DirectoryService.Controllers
 
         }
         // POST api/values
-        public void Login([FromBody]string value)
+            [AllowAnonymous]
+            [HttpPost]
+            [ActionName("Login")]
+        public void Login([Required]string email, [Required]string password)
         {
-            Company company = new Company();
-            company.Name = value;
+            string strLocalUrl = "";
 
-            context.Company.Add(company);
-            context.SaveChanges();
+            WebRequest webRequest = WebRequest.Create("/token");
+            webRequest.Method = "POST";
+            webRequest.ContentType = "application/x-www-form-urlencoded";
 
+            byte[] byteBody = new ASCIIEncoding().GetBytes("grant_type=password=&username=EmailEx&password=PasswordEx");
+
+            webRequest.ContentLength = byteBody.Length;
+            webRequest.GetRequestStream().Write(byteBody, 0, byteBody.Length);
+
+            webRequest.GetRequestStream().Close();
+
+            var serializer = new DataContractJsonSerializer(typeof());
 
         }
     }
