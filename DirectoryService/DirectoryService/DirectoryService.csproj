@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AuthanticateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Dtos\AuthorizedDto.cs" />
     <Compile Include="Dtos\AuthTokenDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
