@@ -8,10 +8,12 @@ namespace DirectoryPortal.Controllers
 {
     public class CompanyController : Controller
     {
-        public ActionResult Login()
+        
+        public ActionResult Dashboard()
         {
             return View();
         }
+
 
         public ActionResult Index()
         {
