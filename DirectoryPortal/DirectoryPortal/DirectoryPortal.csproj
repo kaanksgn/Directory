@@ -135,6 +135,7 @@
     <Content Include="Assets\Css\Default\Content\bootstrap.css" />
     <Content Include="Assets\Css\Default\Content\bootstrap.min.css" />
     <Content Include="Assets\Css\LoginPage.css" />
+    <Content Include="Assets\Css\MyStyle.css" />
     <Content Include="Assets\Js\Login\Login.js" />
     <Content Include="favicon.ico" />
     <Content Include="Assets\Css\Default\Content\fonts\glyphicons-halflings-regular.svg" />

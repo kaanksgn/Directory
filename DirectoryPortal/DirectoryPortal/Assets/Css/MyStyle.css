@@ -1,0 +1,19 @@
+﻿.line{
+    height : 2px;
+    margin : 10px ;
+    overflow : hidden ;
+    background-color:transparent;
+    border-width: 0px;
+    border-top: 1px solid #ffffff;
+}
+.modal-header .close {
+    margin-top: -2px;
+    position: absolute;
+    float: right;
+    top: 15px;
+    right: 15px;
+    /* size: 10px; */
+    height: 30px;
+    width: 30px;
+    background-color: black;
+}

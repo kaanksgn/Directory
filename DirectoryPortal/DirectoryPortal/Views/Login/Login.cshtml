@@ -22,43 +22,85 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Assets/Css/LoginPage.css" rel="stylesheet" />
 </head>
-<body>
-    <body data-new-gr-c-s-check-loaded="14.1068.0" data-gr-ext-installed="" style="background-color:#222">
+<body data-new-gr-c-s-check-loaded="14.1068.0" data-gr-ext-installed="" style="background-color:#222">
 
-        <div class="container">
+    <div class="container">
 
-            <form class="form-signin">
-                <h2 class="form-signin-heading" style="    text-align: center;
+        <form class="form-signin">
+            <h2 class="form-signin-heading" style="    text-align: center;
     font-size: 40px; color:white">
-                    App v1.0
-                </h2>
-                <div class="form-group">
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                App v1.0
+            </h2>
+            <div class="form-group">
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="Login(); return false;">Sign in</button>
+            <!-- Button trigger modal -->
+            <div class="line"></div>
+            <a href="#modalRegister" data-toggle="modal" class="pull-right">Sign Up</a>
+        </form>
+
+    </div> <!-- /container -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--===========================================================================================-->
+    <!-- Modals -->
+    <div>
+
+        <!-- Register Modal -->
+        <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Register</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" id="inputNameRegister" class="form-control" placeholder="Name" required="" autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="inputEmailRegister" class="form-control" placeholder="Email address" required="" autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="inputPhoneRegister" class="form-control" placeholder="Phone Number" required="" autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="inputPasswordRegister" class="form-control" placeholder="Password" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="inputPasswordAgainRegister" class="form-control" placeholder="Password Again" required="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="Register(); return false;">Save changes</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="Login(); return false;">Sign in</button>
-            </form>
-
-        </div> <!-- /container -->
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-
-    </body>
-
+            </div>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Assets/Js/Login/Login.js"></script>
+
+
+
+
+
+
+
 
 </body>
 </html>
