@@ -122,9 +122,9 @@ namespace DirectoryService.Controllers
                 Company company = (from c in context.Company where c.Email == email select c).FirstOrDefault();
 
 
-
-                if (company == null)
-                {
+                if (company != null)
+                    return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Email is already exist!");
+               
                     byte[] passwordHash, passwordSalt;
                     CreatePassword(password, out passwordHash, out passwordSalt);
                     if ((passwordHash != null || passwordSalt != null))
@@ -146,7 +146,7 @@ namespace DirectoryService.Controllers
                         context.Company.Add(newCompany);
                         context.SaveChanges();
                     }
-                }
+                
             }
             catch (Exception exc)
             {

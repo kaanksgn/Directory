@@ -43,6 +43,7 @@
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
+                <a href="#modalRemindPassword" data-toggle="modal" class="pull-right">Forgot my Password</a>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="Login(); return false;">Sign in</button>
             <!-- Button trigger modal -->
@@ -80,6 +81,27 @@
                         </div>
                         <div class="form-group">
                             <input type="password" id="inputPasswordAgainRegister" class="form-control" placeholder="Password Again" required="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="Register(); return false;">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RemindPassword Modal -->
+        <div class="modal fade" id="modalRemindPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Forgot my Password</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="email" id="inputEmailRegister" class="form-control" placeholder="Email address" required="" autofocus="">
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -24,13 +24,12 @@
 
     });
 }
-
 function Register() {
 
     var name = jQuery('#inputNameRegister').val();
     var email = jQuery('#inputEmailRegister').val();
-    var password = jQuery('#inputPhoneRegister').val();
-    var phone = jQuery('#inputPasswordRegister').val();
+    var phone = jQuery('#inputPhoneRegister').val();
+    var password = jQuery('#inputPasswordRegister').val();
     var passwordAgain = jQuery('#inputPasswordAgainRegister').val();
 
 
@@ -39,19 +38,13 @@ function Register() {
 
     } else {
 
-        var params = "?name=" + name + "?email=" + email + "&password=" + password  "&phone=" + phone;
+        var params = "?name=" + name + "&email=" + email + "&password=" + password + "&phone=" + phone;
         $.ajax({
             type: "POST",
             url: "http://localhost:50706/api/Authanticate/Register" + params,
             cache: false,
-            success: function (data) {
-
-                if (data !== null && data !== undefined && data !== "undefined" && data !== "") {
-                    alert("Register Successfull.")
-                } else {
-
-                    alert("Error accured while Process.");
-                }
+            success: function (data) { 
+                    alert("Register Successful.");
             },
             error: function (xhr, txtStatus, errorThrown) {
                 alert("Error Code : " + xhr.status + " " + txtStatus + "\n" + errorThrown);
